@@ -1,13 +1,36 @@
 <?php
-session_start(); 
+session_start();
 ?>
-<!doctype html>
-<html xmlns:fb="http://www.facebook.com/2008/fbml">
-  <head>
-    <title>Login with Facebook</title>
-<link href="http://www.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet"> 
- </head>
-  <body>
+<!DOCTYPE html>
+<html lang="en" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+  <title>Bootstrap Case</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <h3>Basic Navbar Example</h3>
+  <p>A navigation bar is a navigation header that is placed at the top of the page.</p>
+</div>
+<body>
   <?php if ($_SESSION['FBID']): ?>      <!--  After user login  -->
 <div class="container">
 <div class="hero-unit">
@@ -21,22 +44,25 @@ session_start();
 <li class="nav-header">Facebook ID</li>
 <li><?php echo  $_SESSION['FBID']; ?></li>
 <li class="nav-header">Facebook fullname</li>
-<li><?php echo $_SESSION['FULLNAME']; ?></li>
-<li class="nav-header">Facebook Email</li>
-<li><?php echo $_SESSION['EMAIL']; ?></li>
-<div><a href="logout.php">Logout</a></div>
-</ul></div></div>
-    <?php else: ?>     <!-- Before login --> 
-<div class="container">
-<h1>Login with Facebook</h1>
-           Not Connected
-<div>
-      <a href="fbconfig.php">Login with Facebook</a></div>
-   <div> <a href="http://www.krizna.com/general/login-with-facebook-using-php/"  title="Login with facebook">View Post</a>
+<li><?php echo $_SESSION['FULLNAME']; ?></li><div><a href="logout.php">Logout</a></div>
+<li class="nav-header">Friends</li>
+<li><?php include("friends.php");?></li>
+
+</ul>
+</div>
+</div>
+        
+<?php else: ?>     
+          
+<!-- Before login --> 
+
+    <div class="container">
+    <h1>Login with Facebook</h1>
+               Not Connected
+    <div>
+          <a href="fbconfig.php">Login with Facebook</a></div>
     </div>
-      </div>
-    <?php endif ?>
-
-
-  </body>
+    
+<?php endif ?>
+</body>
 </html>
